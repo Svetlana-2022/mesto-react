@@ -2,15 +2,16 @@ import React from "react";
 import { api } from '../utils/api';
 import Card from './Card';
 
+
 function Main(props) {
     const [userName, setUserName] = React.useState('');
     const [userDescription, setUserDescription] = React.useState('');
     const [userAvatar, setUserAvatar] = React.useState('');
     const [cards, setCards] = React.useState([]);
-    
 
     React.useEffect(() => {
         api.getUserInfo().then((resUser) => {
+            
             setUserName(resUser.name);
             setUserDescription(resUser.about);
             setUserAvatar(resUser.avatar);
@@ -19,14 +20,9 @@ function Main(props) {
 
     React.useEffect(() => {
         api.getInitialCards().then((resCard) => {
-            console.log('cards--',resCard)
             setCards(resCard);
         }).catch(err => console.log(err));
     }, [])
-
-    const cardCompanents =cards.map((card) => {
-        return <Card key={card._id} card={card} onCardClick={props.onCardClick}/>
-    });
 
     return (
         <main className="content">
@@ -44,7 +40,15 @@ function Main(props) {
             </section>
             <section className="groups">
                 <ul className="groups__elements">
-                    {cardCompanents}
+                    {cards.map((card) => {
+                        return (
+                            <Card
+                                key={card._id}
+                                card={card}
+                                onCardClick={props.onCardClick}
+                            />
+                        )
+                    })}
                 </ul>
             </section>
         </main>

@@ -48,7 +48,7 @@ function App() {
         }
         />
         <Footer/>
-        <PopupWithForm title="Редактировать профиль" name="edit" isOpen ={isEditProfilePopupOpen} onClose={
+        <PopupWithForm title="Редактировать профиль" name="edit" buttonText="Сохранить" isOpen ={isEditProfilePopupOpen} onClose={
             function handleCloseClick() {
                 closeAllPopups();
             }
@@ -57,9 +57,8 @@ function App() {
             <span className="form__input-error name-input-error" ></span>
             <input id="name-job" type="text" className="form__input form__input_type_job" placeholder="О себе" name="jobInput" minLength="2" maxLength="200" required/>
             <span className="form__input-error name-job-error"></span>
-            <button type="submit" className="form__submit-button">Сохранить</button>
         </PopupWithForm>
-        <PopupWithForm title="Новое место" name="card" isOpen ={isAddPlacePopupOpen} onClose={
+        <PopupWithForm title="Новое место" name="card" buttonText="Создать" isOpen ={isAddPlacePopupOpen} onClose={
             function handleCloseClick() {
                 closeAllPopups();
             }
@@ -68,7 +67,6 @@ function App() {
             <span className="form__input-error name-card-error"></span>
             <input id="link-card" type="url" className="form__input form__input_type_link" placeholder="Ссылка на картинку" name="linkCard" required/>
             <span className="form__input-error link-card-error"></span> 
-            <button type="submit" className="form__submit-button">Создать</button>
         </PopupWithForm>
         <ImagePopup card={selectedCard}  onClose={
             function handleCloseClick() {
@@ -76,17 +74,14 @@ function App() {
             }}
             isOpen={isImegePopupOpen}
         />
-        <PopupWithForm title="Вы уверены?" name="delete">
-            <button type="submit" className="form__submit-button form__submit-button_for_delete">Да</button>
-        </PopupWithForm>
-        <PopupWithForm title="Обновить аватар" name="avatar" isOpen ={isEditAvatarPopupOpen} onClose={
+        <PopupWithForm title="Вы уверены?" name="delete" buttonText="Да" />
+        <PopupWithForm title="Обновить аватар" name="avatar" buttonText="Сохранить" isOpen ={isEditAvatarPopupOpen} onClose={
             function handleCloseClick() {
                 closeAllPopups();
             }
         }>
             <input id="link-avatar" type="url" className="form__input form__input_type_avatar" placeholder="Ссылка на картинку" name="avatar" required/>
-            <span className="form__input-error link-avatar-error"></span> 
-            <button type="submit" className="form__submit-button">Сохранить</button>
+            <span className="form__input-error link-avatar-error"></span>
         </PopupWithForm>
         
     </>
