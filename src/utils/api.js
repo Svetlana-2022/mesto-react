@@ -40,6 +40,7 @@ export class Api {
       }).then(this._getResponseData);
     }
 
+    
     //метод добавления новой карточки
     addCard = ({ name, link }) => {
       return fetch(`${this._url}cards`, {
@@ -70,7 +71,9 @@ export class Api {
         headers: this._headers
       }).then(this._getResponseData);
     }
+  
   }
+  
   //экземпляр класса работы с сервером: Api
   const api = new Api(config);
 
